@@ -1,0 +1,15 @@
+services:
+
+  nginx:
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - './default.conf:/etc/nginx/conf.d/default.conf:Z'
+      - './certificate.crt:/etc/nginx/ssl/certificate.crt:Z'
+      - './private.key:/etc/nginx/ssl/private.key:Z'
+    restart: always
+    image: docker.io/library/nginx:latest
+    container_name: nginx
+    extra_hosts:
+      - 'chifu168.net:192.168.254.184'
